@@ -9,66 +9,68 @@ namespace HomeworkTest
 {
     public class MainForm : Form
     {
-        private Bitmap originalImage;
-        private Bitmap modifiedImage;
-        private Bitmap diffImage;
+        private Bitmap Image1;
+        private Bitmap Image2;
+        private Bitmap diff1;
+        private Bitmap diff2;
+        PictureBox Box1, Box2;
         private List<Rectangle> diffRegions;
         private List<Rectangle> foundRegions;
         private const int TOLERANCE = 60;
-        private PictureBox pictureBox;
 
         public MainForm()
         {
-            this.Width = 1200;
-            this.Height = 700;
+            this.Width = 640;
+            this.Height = 480;
             this.Text = "Find the Difference Game";
 
-            PictureBox originalBox = new PictureBox
+            Box1 = new PictureBox
             {
-                Width = 350,
-                Height = 500,
-                Location = new Point(20, 50),
+                Width = 300,
+                Height = 400,
+                Location = new Point(10, 10),
                 SizeMode = PictureBoxSizeMode.Zoom,
                 BorderStyle = BorderStyle.FixedSingle
             };
 
-            PictureBox modifiedBox = new PictureBox
+            Box2 = new PictureBox
             {
-                Width = 350,
-                Height = 500,
-                Location = new Point(390, 50),
+                Width = 300,
+                Height = 400,
+                Location = new Point(315, 10),
                 SizeMode = PictureBoxSizeMode.Zoom,
                 BorderStyle = BorderStyle.FixedSingle
             };
 
-            originalBox.MouseClick += (s, e) => PictureBox_MouseClick(s, e, originalBox);
-            modifiedBox.MouseClick += (s, e) => PictureBox_MouseClick(s, e, modifiedBox);
+            Box1.MouseClick += (s, e) => PictureBox_MouseClick(s, e);
+            Box2.MouseClick += (s, e) => PictureBox_MouseClick(s, e);
 
-            this.Controls.Add(originalBox);
-            this.Controls.Add(modifiedBox);
+            this.Controls.Add(Box1);
+            this.Controls.Add(Box2);
 
             LoadImages();
+            Box1.Image = Image1;
+            Box2.Image = Image2;
+
+
             DetectDifferences();
-            originalBox.Image = originalImage;
-            modifiedBox.Image = modifiedImage;
         }
 
         private void LoadImages()
         {
-            string originalPath = Path.Combine(Application.StartupPath, "assets", "original.png");
-            string editedPath = Path.Combine(Application.StartupPath, "assets", "edited.png");
+            string Path1 = Path.Combine(Application.StartupPath, "assets", "original.png");
+            string Path2 = Path.Combine(Application.StartupPath, "assets", "edited.png");
 
-            if (!File.Exists(originalPath) || !File.Exists(editedPath))
+            if (!File.Exists(Path1) || !File.Exists(Path2))
             {
-                MessageBox.Show(originalPath);
-
-                //MessageBox.Show("One or both image files not found!");
+                MessageBox.Show("One or both image files not found!");
                 return;
             }
 
-            originalImage = new Bitmap(originalPath);
-            modifiedImage = new Bitmap(editedPath);
-            diffImage = new Bitmap(modifiedImage.Width, modifiedImage.Height);
+            Image1 = new Bitmap(Path1);
+            Image2 = new Bitmap(Path2);
+            diff1 = new Bitmap(Image1.Width, Image1.Height);
+            diff1 = new Bitmap(Image2.Width, Image2.Height);
         }
 
         private void DetectDifferences()
@@ -76,10 +78,10 @@ namespace HomeworkTest
             diffRegions = new List<Rectangle>();
             foundRegions = new List<Rectangle>();
 
-            Rectangle rect = new Rectangle(0, 0, originalImage.Width, originalImage.Height);
-            BitmapData data1 = originalImage.LockBits(rect, ImageLockMode.ReadOnly, PixelFormat.Format24bppRgb);
-            BitmapData data2 = modifiedImage.LockBits(rect, ImageLockMode.ReadOnly, PixelFormat.Format24bppRgb);
-            BitmapData dataDiff = diffImage.LockBits(rect, ImageLockMode.WriteOnly, PixelFormat.Format24bppRgb);
+            Rectangle rect = new Rectangle(0, 0, Image1.Width, Image1.Height);
+            BitmapData data1 = Image1.LockBits(rect, ImageLockMode.ReadOnly, PixelFormat.Format24bppRgb);
+            BitmapData data2 = Image2.LockBits(rect, ImageLockMode.ReadOnly, PixelFormat.Format24bppRgb);
+            BitmapData dataDiff = diff1.LockBits(rect, ImageLockMode.WriteOnly, PixelFormat.Format24bppRgb);
 
             int stride = data1.Stride;
 
@@ -91,9 +93,9 @@ namespace HomeworkTest
                     byte* ptr2 = (byte*)data2.Scan0;
                     byte* ptrDiff = (byte*)dataDiff.Scan0;
 
-                    for (int y = 0; y < originalImage.Height; y++)
+                    for (int y = 0; y < Image1.Height; y++)
                     {
-                        for (int x = 0; x < originalImage.Width; x++)
+                        for (int x = 0; x < Image1.Width; x++)
                         {
                             int index = y * stride + x * 3;
 
@@ -129,9 +131,9 @@ namespace HomeworkTest
                 MessageBox.Show("DetectDifferences error: " + ex.Message);
             }
 
-            originalImage.UnlockBits(data1);
-            modifiedImage.UnlockBits(data2);
-            diffImage.UnlockBits(dataDiff);
+            Image1.UnlockBits(data1);
+            Image2.UnlockBits(data2);
+            diff1.UnlockBits(dataDiff);
 
             MergeDiffRegions();
         }
@@ -160,12 +162,14 @@ namespace HomeworkTest
             diffRegions = merged;
         }
 
-        private void PictureBox_MouseClick(object sender, MouseEventArgs e, PictureBox box)
+        private void PictureBox_MouseClick(object sender, MouseEventArgs e)
         {
-            if (box.Image == null) return;
+            PictureBox clickedBox = sender as PictureBox;
 
-            float scaleX = (float)originalImage.Width / box.Width;
-            float scaleY = (float)originalImage.Height / box.Height;
+            if (clickedBox.Image == null) return;
+
+            float scaleX = (float)Image1.Width / clickedBox.Width;
+            float scaleY = (float)Image1.Height / clickedBox.Height;
 
             int imgX = (int)(e.X * scaleX);
             int imgY = (int)(e.Y * scaleY);
@@ -175,24 +179,68 @@ namespace HomeworkTest
                 if (region.Contains(imgX, imgY) && !foundRegions.Contains(region))
                 {
                     foundRegions.Add(region);
-                    DrawBoundingBox(box, region);
+                    ShowClickedDifference(Box1);
+                    ShowClickedDifference(Box2);
                     break;
+
+                    //if (clickedBox == Box1)
+                    //{
+                    //    MessageBox.Show("Box1");
+                    //}
+                    //else if (clickedBox == Box2)
+                    //{
+                    //    MessageBox.Show("Box2");
+                    //}
                 }
             }
         }
 
-        private void DrawBoundingBox(PictureBox box, Rectangle region)
+        private void ShowClickedDifference(PictureBox box)
         {
-            using (Graphics g = Graphics.FromImage(diffImage))
+            Bitmap tempImage = new Bitmap(box.Image);
+
+            using (Graphics g = Graphics.FromImage(tempImage))
+            using (Pen pen = new Pen(Color.Green, 3))
             {
-                using (Pen pen = new Pen(Color.Green, 3))
+                foreach (var region in foundRegions)
                 {
                     g.DrawRectangle(pen, region);
                 }
             }
 
-            box.Image = null;
-            box.Image = diffImage;
+            box.Image = tempImage;
         }
+
+
+        //private void DrawBoundingBox(PictureBox box, Rectangle region)
+        //{
+        //    using (Graphics g = Graphics.FromImage(diff1))
+        //    {
+        //        using (Pen pen = new Pen(Color.Green, 3))
+        //        {
+        //            g.DrawRectangle(pen, region);
+        //        }
+        //    }
+
+        //    box.Image = null;
+        //    box.Image = diff1;
+        //}
+
+
+        //private void RedrawFoundDifferences(PictureBox box)
+        //{
+        //    Bitmap tempImage = new Bitmap(Image2);
+
+        //    using (Graphics g = Graphics.FromImage(tempImage))
+        //    using (Pen pen = new Pen(Color.Green, 3))
+        //    {
+        //        foreach (var region in foundRegions)
+        //        {
+        //            g.DrawRectangle(pen, region);
+        //        }
+        //    }
+
+        //    box.Image = tempImage;
+        //}
     }
 }
