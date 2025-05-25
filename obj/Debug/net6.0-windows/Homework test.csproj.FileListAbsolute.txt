@@ -1,0 +1,18 @@
+D:\draw_university\Homework test\obj\Debug\net6.0-windows\Homework test.csproj.AssemblyReference.cache
+D:\draw_university\Homework test\obj\Debug\net6.0-windows\Homework_test.Form1.resources
+D:\draw_university\Homework test\obj\Debug\net6.0-windows\Homework test.csproj.GenerateResource.cache
+D:\draw_university\Homework test\obj\Debug\net6.0-windows\Homework test.GeneratedMSBuildEditorConfig.editorconfig
+D:\draw_university\Homework test\obj\Debug\net6.0-windows\Homework test.AssemblyInfoInputs.cache
+D:\draw_university\Homework test\obj\Debug\net6.0-windows\Homework test.AssemblyInfo.cs
+D:\draw_university\Homework test\obj\Debug\net6.0-windows\Homework test.csproj.CoreCompileInputs.cache
+D:\draw_university\Homework test\bin\Debug\net6.0-windows\Homework test.exe
+D:\draw_university\Homework test\bin\Debug\net6.0-windows\Homework test.deps.json
+D:\draw_university\Homework test\bin\Debug\net6.0-windows\Homework test.runtimeconfig.json
+D:\draw_university\Homework test\bin\Debug\net6.0-windows\Homework test.dll
+D:\draw_university\Homework test\bin\Debug\net6.0-windows\Homework test.pdb
+D:\draw_university\Homework test\obj\Debug\net6.0-windows\FindDifferenceGame.MainForm.resources
+D:\draw_university\Homework test\obj\Debug\net6.0-windows\Homework test.dll
+D:\draw_university\Homework test\obj\Debug\net6.0-windows\refint\Homework test.dll
+D:\draw_university\Homework test\obj\Debug\net6.0-windows\Homework test.pdb
+D:\draw_university\Homework test\obj\Debug\net6.0-windows\Homework test.genruntimeconfig.cache
+D:\draw_university\Homework test\obj\Debug\net6.0-windows\ref\Homework test.dll
