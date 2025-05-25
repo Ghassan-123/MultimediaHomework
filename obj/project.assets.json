@@ -2084,23 +2084,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\GHASSAN\\.nuget\\packages\\": {},
+    "C:\\Users\\ASUS\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\draw_university\\Homework test\\HomeworkTest.csproj",
+      "projectUniqueName": "D:\\ITE\\year 4\\Multimedia\\MultimediaHomework\\HomeworkTest.csproj",
       "projectName": "HomeworkTest",
-      "projectPath": "D:\\draw_university\\Homework test\\HomeworkTest.csproj",
-      "packagesPath": "C:\\Users\\GHASSAN\\.nuget\\packages\\",
-      "outputPath": "D:\\draw_university\\Homework test\\obj\\",
+      "projectPath": "D:\\ITE\\year 4\\Multimedia\\MultimediaHomework\\HomeworkTest.csproj",
+      "packagesPath": "C:\\Users\\ASUS\\.nuget\\packages\\",
+      "outputPath": "D:\\ITE\\year 4\\Multimedia\\MultimediaHomework\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\GHASSAN\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\ASUS\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],

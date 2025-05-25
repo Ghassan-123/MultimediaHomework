@@ -4,6 +4,7 @@ using System.Windows.Forms;
 using System.Collections.Generic;
 using System.Drawing.Imaging;
 using System.Drawing;
+using System.Media;
 using NAudio.Wave;
 
 namespace HomeworkTest
@@ -15,7 +16,7 @@ namespace HomeworkTest
         private Bitmap diff1;
         private Bitmap diff2;
         PictureBox Box1, Box2, diffBox;
-        private AudioFileReader audio1, audio2;
+        private SoundPlayer audio1, audio2;
 
         private List<Rectangle> diffRegions;
         private List<Rectangle> foundRegions;
@@ -97,8 +98,8 @@ namespace HomeworkTest
 
         private void LoadAudios()
         {
-            string Path1 = Path.Combine(Application.StartupPath, "assets", "found.mp3");
-            string Path2 = Path.Combine(Application.StartupPath, "assets", "notfound.mp3");
+            string Path1 = Path.Combine(Application.StartupPath, "assets", "found.wav");
+            string Path2 = Path.Combine(Application.StartupPath, "assets", "notfound.wav");
 
             if (!File.Exists(Path1) || !File.Exists(Path2))
             {
@@ -106,8 +107,8 @@ namespace HomeworkTest
                 return;
             }
 
-            audio1 = new AudioFileReader(Path1);
-            audio2 = new AudioFileReader(Path2);
+            audio1 = new SoundPlayer(Path1);
+            audio2 = new SoundPlayer(Path2);
         }
 
         private void PictureBox_MouseClick(object sender, MouseEventArgs e)
@@ -123,6 +124,7 @@ namespace HomeworkTest
             int imgY = (int)(e.Y * scaleY);
 
             bool found = false;
+
             foreach (var region in diffRegions)
             {
                 if (region.Contains(imgX, imgY) && !foundRegions.Contains(region))
@@ -132,20 +134,10 @@ namespace HomeworkTest
                     ShowClickedDifference(Box1);
                     ShowClickedDifference(Box2);
                     break;
-
-                    //if (clickedBox == Box1)
-                    //{
-                    //    MessageBox.Show("Box1");
-                    //}
-                    //else if (clickedBox == Box2)
-                    //{
-                    //    MessageBox.Show("Box2");
-                    //}
                 }
             }
-
             PlaySound(found);
-            found = !found;
+            _ = !found;
         }
 
         private void ShowClickedDifference(PictureBox box)
@@ -166,23 +158,10 @@ namespace HomeworkTest
 
         private void PlaySound(bool found)
         {
-            using (var outputDevice = new WaveOutEvent())
-            {
-                if (found)
-                {
-                    outputDevice.Init(audio1);
-
-                }
-                else
-                {
-                    outputDevice.Init(audio2);
-                }
-                outputDevice.Play();
-                while (outputDevice.PlaybackState == PlaybackState.Playing)
-                {
-                    System.Threading.Thread.Sleep(100);
-                }
-            }
+            if (found)
+                audio1?.Play();   // plays asynchronously
+            else
+                audio2?.Play();   // plays asynchronously
         }
 
         private void DetectDifferences()
