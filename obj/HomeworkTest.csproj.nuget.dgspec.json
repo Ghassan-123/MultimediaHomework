@@ -1,28 +1,28 @@
 {
   "format": 1,
   "restore": {
-    "D:\\ITE\\year 4\\Multimedia\\MultimediaHomework\\HomeworkTest.csproj": {}
+    "D:\\projects\\C#\\MultimediaHomework\\HomeworkTest.csproj": {}
   },
   "projects": {
-    "D:\\ITE\\year 4\\Multimedia\\MultimediaHomework\\HomeworkTest.csproj": {
+    "D:\\projects\\C#\\MultimediaHomework\\HomeworkTest.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\ITE\\year 4\\Multimedia\\MultimediaHomework\\HomeworkTest.csproj",
+        "projectUniqueName": "D:\\projects\\C#\\MultimediaHomework\\HomeworkTest.csproj",
         "projectName": "HomeworkTest",
-        "projectPath": "D:\\ITE\\year 4\\Multimedia\\MultimediaHomework\\HomeworkTest.csproj",
-        "packagesPath": "C:\\Users\\ASUS\\.nuget\\packages\\",
-        "outputPath": "D:\\ITE\\year 4\\Multimedia\\MultimediaHomework\\obj\\",
+        "projectPath": "D:\\projects\\C#\\MultimediaHomework\\HomeworkTest.csproj",
+        "packagesPath": "C:\\Users\\Mohamed Al-majzoub\\.nuget\\packages\\",
+        "outputPath": "D:\\projects\\C#\\MultimediaHomework\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\ASUS\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Mohamed Al-majzoub\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "net6.0-windows7.0"
+          "net6.0-windows"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
@@ -38,7 +38,13 @@
           "warnAsError": [
             "NU1605"
           ]
-        }
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.300"
       },
       "frameworks": {
         "net6.0-windows7.0": {
@@ -59,7 +65,8 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -71,7 +78,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.302\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.300\\RuntimeIdentifierGraph.json"
         }
       }
     }

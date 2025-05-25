@@ -60,3 +60,18 @@ D:\ITE\year 4\Multimedia\MultimediaHomework\bin\Debug\net6.0-windows\System.IO.P
 D:\ITE\year 4\Multimedia\MultimediaHomework\bin\Debug\net6.0-windows\System.Text.Encodings.Web.dll
 D:\ITE\year 4\Multimedia\MultimediaHomework\bin\Debug\net6.0-windows\System.Text.Json.dll
 D:\ITE\year 4\Multimedia\MultimediaHomework\obj\Debug\net6.0-windows\HomeworkTest.csproj.CopyComplete
+D:\projects\C#\MultimediaHomework\obj\Debug\net6.0-windows\HomeworkTest.csproj.AssemblyReference.cache
+D:\projects\C#\MultimediaHomework\obj\Debug\net6.0-windows\HomeworkTest.Form1.resources
+D:\projects\C#\MultimediaHomework\obj\Debug\net6.0-windows\HomeworkTest.MainForm.resources
+D:\projects\C#\MultimediaHomework\obj\Debug\net6.0-windows\HomeworkTest.preTimed.resources
+D:\projects\C#\MultimediaHomework\obj\Debug\net6.0-windows\HomeworkTest.Properties.Resources.resources
+D:\projects\C#\MultimediaHomework\obj\Debug\net6.0-windows\HomeworkTest.Timed.resources
+D:\projects\C#\MultimediaHomework\obj\Debug\net6.0-windows\HomeworkTest.csproj.GenerateResource.cache
+D:\projects\C#\MultimediaHomework\obj\Debug\net6.0-windows\HomeworkTest.GeneratedMSBuildEditorConfig.editorconfig
+D:\projects\C#\MultimediaHomework\obj\Debug\net6.0-windows\HomeworkTest.AssemblyInfoInputs.cache
+D:\projects\C#\MultimediaHomework\obj\Debug\net6.0-windows\HomeworkTest.AssemblyInfo.cs
+D:\projects\C#\MultimediaHomework\obj\Debug\net6.0-windows\HomeworkTest.csproj.CoreCompileInputs.cache
+D:\projects\C#\MultimediaHomework\obj\Debug\net6.0-windows\HomeworkTest.sourcelink.json
+D:\projects\C#\MultimediaHomework\obj\Debug\net6.0-windows\HomeworkTest.dll
+D:\projects\C#\MultimediaHomework\obj\Debug\net6.0-windows\refint\HomeworkTest.dll
+D:\projects\C#\MultimediaHomework\obj\Debug\net6.0-windows\HomeworkTest.pdb

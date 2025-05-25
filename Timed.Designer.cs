@@ -42,16 +42,20 @@
             pictureBox1.Location = new System.Drawing.Point(25, 12);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new System.Drawing.Size(600, 600);
+            pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
+            pictureBox1.Click += pictureBox1_Click;
             // 
             // pictureBox2
             // 
             pictureBox2.Location = new System.Drawing.Point(650, 12);
             pictureBox2.Name = "pictureBox2";
             pictureBox2.Size = new System.Drawing.Size(600, 600);
+            pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             pictureBox2.TabIndex = 1;
             pictureBox2.TabStop = false;
+            pictureBox2.Click += pictureBox2_Click;
             // 
             // richTextBox1
             // 
