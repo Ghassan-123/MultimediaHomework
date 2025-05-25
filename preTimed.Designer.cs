@@ -1,6 +1,6 @@
 ﻿namespace HomeworkTest
 {
-    partial class Form1
+    partial class preTimed
     {
         /// <summary>
         /// Required designer variable.
@@ -30,39 +30,51 @@
         {
             button1 = new System.Windows.Forms.Button();
             button2 = new System.Windows.Forms.Button();
+            button3 = new System.Windows.Forms.Button();
             SuspendLayout();
             // 
             // button1
             // 
-            button1.Location = new System.Drawing.Point(175, 266);
+            button1.Location = new System.Drawing.Point(202, 71);
             button1.Name = "button1";
-            button1.Size = new System.Drawing.Size(340, 113);
+            button1.Size = new System.Drawing.Size(275, 94);
             button1.TabIndex = 0;
-            button1.Text = "TImed";
+            button1.Text = "easy";
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click;
             // 
             // button2
             // 
-            button2.Location = new System.Drawing.Point(175, 449);
+            button2.Location = new System.Drawing.Point(202, 273);
             button2.Name = "button2";
-            button2.Size = new System.Drawing.Size(340, 113);
+            button2.Size = new System.Drawing.Size(275, 94);
             button2.TabIndex = 1;
-            button2.Text = "Survival";
+            button2.Text = "medium";
             button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;
             // 
-            // Form1
+            // button3
+            // 
+            button3.Location = new System.Drawing.Point(202, 474);
+            button3.Name = "button3";
+            button3.Size = new System.Drawing.Size(275, 94);
+            button3.TabIndex = 2;
+            button3.Text = "hard";
+            button3.UseVisualStyleBackColor = true;
+            button3.Click += button3_Click;
+            // 
+            // preTimed
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(13F, 32F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             BackColor = System.Drawing.Color.RosyBrown;
-            ClientSize = new System.Drawing.Size(720, 720);
+            ClientSize = new System.Drawing.Size(694, 649);
+            Controls.Add(button3);
             Controls.Add(button2);
             Controls.Add(button1);
             FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            Name = "Form1";
-            Text = "Form1";
-            Load += Form1_Load;
+            Name = "preTimed";
+            Text = "preTimed";
             ResumeLayout(false);
         }
 
@@ -70,5 +82,6 @@
 
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button3;
     }
 }

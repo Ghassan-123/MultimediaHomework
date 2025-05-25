@@ -70,6 +70,32 @@ namespace HomeworkTest
             diffBox.Image = diff1;
 
             DetectDifferences();
+
+            // Khalil
+            // Create Button 1
+            button1 = new Button();
+            button1.Text = "Button 1";
+            button1.Location = new System.Drawing.Point(50, 50);
+            button1.Click += Button1_Click;
+            this.Controls.Add(button1);
+
+            // Create Button 2
+            button2 = new Button();
+            button2.Text = "Button 2";
+            button2.Location = new System.Drawing.Point(150, 50);
+            button2.Click += Button2_Click;
+            this.Controls.Add(button2);
+        }
+
+        private void Button1_Click(object sender, EventArgs e)
+        {
+            MainForm newForm = new MainForm(); // or new MainForm(true) if you want the other constructor
+            newForm.Show();
+        }
+
+        private void Button2_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Button 2 clicked!");
         }
 
         private void LoadImages()
