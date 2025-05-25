@@ -13,15 +13,15 @@ namespace HomeworkTest
         private Bitmap Image2;
         private Bitmap diff1;
         private Bitmap diff2;
-        PictureBox Box1, Box2;
+        PictureBox Box1, Box2, diffBox1, diffBox2;
         private List<Rectangle> diffRegions;
         private List<Rectangle> foundRegions;
-        private const int TOLERANCE = 60;
+        private const int TOLERANCE = 70;
 
         public MainForm()
         {
-            this.Width = 640;
-            this.Height = 480;
+            this.Width = 1200;
+            this.Height = 600;
             this.Text = "Find the Difference Game";
 
             Box1 = new PictureBox
@@ -41,16 +41,40 @@ namespace HomeworkTest
                 SizeMode = PictureBoxSizeMode.Zoom,
                 BorderStyle = BorderStyle.FixedSingle
             };
+            diffBox1 = new PictureBox
+            {
+                Width = 300,
+                Height = 400,
+                Location = new Point(600, 10),
+                SizeMode = PictureBoxSizeMode.Zoom,
+                BorderStyle = BorderStyle.FixedSingle
+            };
+            diffBox2 = new PictureBox
+            {
+                Width = 300,
+                Height = 400,
+                Location = new Point(900, 10),
+                SizeMode = PictureBoxSizeMode.Zoom,
+                BorderStyle = BorderStyle.FixedSingle
+            };
 
             Box1.MouseClick += (s, e) => PictureBox_MouseClick(s, e);
             Box2.MouseClick += (s, e) => PictureBox_MouseClick(s, e);
 
             this.Controls.Add(Box1);
             this.Controls.Add(Box2);
+            this.Controls.Add(diffBox1);
 
             LoadImages();
             Box1.Image = Image1;
+            Box1.Width = Image1.Width;
+            Box1.Height = Image1.Height;
             Box2.Image = Image2;
+            Box2.Width = Image2.Width;
+            Box2.Height = Image2.Height;
+            diffBox1.Image = diff1;
+            diffBox1.Width = diff1.Width;
+            diffBox1.Height = diff1.Height;
 
 
             DetectDifferences();
@@ -58,8 +82,8 @@ namespace HomeworkTest
 
         private void LoadImages()
         {
-            string Path1 = Path.Combine(Application.StartupPath, "assets", "original.png");
-            string Path2 = Path.Combine(Application.StartupPath, "assets", "edited.png");
+            string Path1 = Path.Combine(Application.StartupPath, "assets", "sample5.jpg");
+            string Path2 = Path.Combine(Application.StartupPath, "assets", "sample6.jpg");
 
             if (!File.Exists(Path1) || !File.Exists(Path2))
             {
@@ -70,18 +94,20 @@ namespace HomeworkTest
             Image1 = new Bitmap(Path1);
             Image2 = new Bitmap(Path2);
             diff1 = new Bitmap(Image1.Width, Image1.Height);
-            diff1 = new Bitmap(Image2.Width, Image2.Height);
+            diff2 = new Bitmap(Image1.Width, Image1.Height);
         }
 
         private void DetectDifferences()
         {
+            const int BLOCK_SIZE = 10; // Size of each comparison block
             diffRegions = new List<Rectangle>();
             foundRegions = new List<Rectangle>();
 
             Rectangle rect = new Rectangle(0, 0, Image1.Width, Image1.Height);
             BitmapData data1 = Image1.LockBits(rect, ImageLockMode.ReadOnly, PixelFormat.Format24bppRgb);
             BitmapData data2 = Image2.LockBits(rect, ImageLockMode.ReadOnly, PixelFormat.Format24bppRgb);
-            BitmapData dataDiff = diff1.LockBits(rect, ImageLockMode.WriteOnly, PixelFormat.Format24bppRgb);
+            BitmapData dataDiff1 = diff1.LockBits(rect, ImageLockMode.WriteOnly, PixelFormat.Format24bppRgb);
+            BitmapData dataDiff2 = diff2.LockBits(rect, ImageLockMode.WriteOnly, PixelFormat.Format24bppRgb);
 
             int stride = data1.Stride;
 
@@ -91,36 +117,66 @@ namespace HomeworkTest
                 {
                     byte* ptr1 = (byte*)data1.Scan0;
                     byte* ptr2 = (byte*)data2.Scan0;
-                    byte* ptrDiff = (byte*)dataDiff.Scan0;
+                    byte* ptrDiff = (byte*)dataDiff1.Scan0;
+                    byte* ptrDiff2 = (byte*)dataDiff2.Scan0;
 
-                    for (int y = 0; y < Image1.Height; y++)
+                    for (int y = 0; y < Image1.Height; y += BLOCK_SIZE)
                     {
-                        for (int x = 0; x < Image1.Width; x++)
+                        for (int x = 0; x < Image1.Width; x += BLOCK_SIZE)
                         {
-                            int index = y * stride + x * 3;
+                            int totalDiff = 0;
+                            int pixelsCompared = 0;
 
-                            byte b1 = ptr1[index];
-                            byte g1 = ptr1[index + 1];
-                            byte r1 = ptr1[index + 2];
-
-                            byte b2 = ptr2[index];
-                            byte g2 = ptr2[index + 1];
-                            byte r2 = ptr2[index + 2];
-
-                            int diff = Math.Abs(r1 - r2) + Math.Abs(g1 - g2) + Math.Abs(b1 - b2);
-
-                            if (diff > TOLERANCE)
+                            for (int dy = 0; dy < BLOCK_SIZE && (y + dy) < Image1.Height; dy++)
                             {
-                                ptrDiff[index] = 0;
-                                ptrDiff[index + 1] = 0;
-                                ptrDiff[index + 2] = 255;
-                                diffRegions.Add(new Rectangle(x - 10, y - 10, 20, 20));
+                                for (int dx = 0; dx < BLOCK_SIZE && (x + dx) < Image1.Width; dx++)
+                                {
+                                    int px = x + dx;
+                                    int py = y + dy;
+                                    int index = py * stride + px * 3;
+
+                                    byte b1 = ptr1[index];
+                                    byte g1 = ptr1[index + 1];
+                                    byte r1 = ptr1[index + 2];
+
+                                    byte b2 = ptr2[index];
+                                    byte g2 = ptr2[index + 1];
+                                    byte r2 = ptr2[index + 2];
+
+                                    int diff = Math.Abs(r1 - r2) + Math.Abs(g1 - g2) + Math.Abs(b1 - b2);
+                                    totalDiff += diff;
+                                    pixelsCompared++;
+                                }
                             }
-                            else
+
+                            int avgDiff = totalDiff / pixelsCompared;
+
+                            for (int dy = 0; dy < BLOCK_SIZE && (y + dy) < Image1.Height; dy++)
                             {
-                                ptrDiff[index] = b2;
-                                ptrDiff[index + 1] = g2;
-                                ptrDiff[index + 2] = r2;
+                                for (int dx = 0; dx < BLOCK_SIZE && (x + dx) < Image1.Width; dx++)
+                                {
+                                    int px = x + dx;
+                                    int py = y + dy;
+                                    int index = py * stride + px * 3;
+
+                                    if (avgDiff > TOLERANCE)
+                                    {
+                                        ptrDiff[index] = 0;
+                                        ptrDiff[index + 1] = 0;
+                                        ptrDiff[index + 2] = 255;
+                                    }
+                                    else
+                                    {
+                                        ptrDiff[index] = ptr2[index];
+                                        ptrDiff[index + 1] = ptr2[index + 1];
+                                        ptrDiff[index + 2] = ptr2[index + 2];
+                                    }
+                                }
+                            }
+
+                            if (avgDiff > TOLERANCE)
+                            {
+                                diffRegions.Add(new Rectangle(x, y, BLOCK_SIZE, BLOCK_SIZE));
                             }
                         }
                     }
@@ -133,34 +189,60 @@ namespace HomeworkTest
 
             Image1.UnlockBits(data1);
             Image2.UnlockBits(data2);
-            diff1.UnlockBits(dataDiff);
+            diff1.UnlockBits(dataDiff1);
+            diff2.UnlockBits(dataDiff2);
 
             MergeDiffRegions();
         }
 
+
         private void MergeDiffRegions()
         {
             List<Rectangle> merged = new List<Rectangle>();
+            bool[] visited = new bool[diffRegions.Count];
 
-            foreach (var r in diffRegions)
+            for (int i = 0; i < diffRegions.Count; i++)
             {
-                bool added = false;
-                for (int i = 0; i < merged.Count; i++)
-                {
-                    if (merged[i].IntersectsWith(r))
-                    {
-                        merged[i] = Rectangle.Union(merged[i], r);
-                        added = true;
-                        break;
-                    }
-                }
+                if (visited[i]) continue;
 
-                if (!added)
-                    merged.Add(r);
+                Rectangle current = diffRegions[i];
+                visited[i] = true;
+
+                bool changed;
+
+                do
+                {
+                    changed = false;
+
+                    for (int j = 0; j < diffRegions.Count; j++)
+                    {
+                        if (visited[j]) continue;
+
+                        if (AreAdjacentOrOverlapping(current, diffRegions[j]))
+                        {
+                            current = Rectangle.Union(current, diffRegions[j]);
+                            visited[j] = true;
+                            changed = true;
+                        }
+                    }
+                } while (changed);
+
+                merged.Add(current);
             }
 
             diffRegions = merged;
         }
+
+        private bool AreAdjacentOrOverlapping(Rectangle a, Rectangle b)
+        {
+            // Expand A slightly to check for touching sides/corners
+            Rectangle expanded = new Rectangle(
+                a.X - 1, a.Y - 1,
+                a.Width + 2, a.Height + 2
+            );
+            return expanded.IntersectsWith(b);
+        }
+
 
         private void PictureBox_MouseClick(object sender, MouseEventArgs e)
         {
@@ -176,7 +258,8 @@ namespace HomeworkTest
 
             foreach (var region in diffRegions)
             {
-                if (region.Contains(imgX, imgY) && !foundRegions.Contains(region))
+                Rectangle expandedRegion = Rectangle.Inflate(region, 5, 5);
+                if (expandedRegion.Contains(imgX, imgY) && !foundRegions.Contains(region))
                 {
                     foundRegions.Add(region);
                     ShowClickedDifference(Box1);
