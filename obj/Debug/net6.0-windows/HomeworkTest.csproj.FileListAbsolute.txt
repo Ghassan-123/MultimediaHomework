@@ -34,3 +34,16 @@ D:\ITE\year 4\Multimedia\MultimediaHomework\obj\Debug\net6.0-windows\refint\Home
 D:\ITE\year 4\Multimedia\MultimediaHomework\obj\Debug\net6.0-windows\HomeworkTest.pdb
 D:\ITE\year 4\Multimedia\MultimediaHomework\obj\Debug\net6.0-windows\HomeworkTest.genruntimeconfig.cache
 D:\ITE\year 4\Multimedia\MultimediaHomework\obj\Debug\net6.0-windows\ref\HomeworkTest.dll
+D:\draw_university\Homework test\bin\Debug\net6.0-windows\Emgu.CV.dll
+D:\draw_university\Homework test\bin\Debug\net6.0-windows\Microsoft.Bcl.AsyncInterfaces.dll
+D:\draw_university\Homework test\bin\Debug\net6.0-windows\NAudio.dll
+D:\draw_university\Homework test\bin\Debug\net6.0-windows\NAudio.Asio.dll
+D:\draw_university\Homework test\bin\Debug\net6.0-windows\NAudio.Core.dll
+D:\draw_university\Homework test\bin\Debug\net6.0-windows\NAudio.Midi.dll
+D:\draw_university\Homework test\bin\Debug\net6.0-windows\NAudio.Wasapi.dll
+D:\draw_university\Homework test\bin\Debug\net6.0-windows\NAudio.WinForms.dll
+D:\draw_university\Homework test\bin\Debug\net6.0-windows\NAudio.WinMM.dll
+D:\draw_university\Homework test\bin\Debug\net6.0-windows\System.IO.Pipelines.dll
+D:\draw_university\Homework test\bin\Debug\net6.0-windows\System.Text.Encodings.Web.dll
+D:\draw_university\Homework test\bin\Debug\net6.0-windows\System.Text.Json.dll
+D:\draw_university\Homework test\obj\Debug\net6.0-windows\HomeworkTest.csproj.CopyComplete

@@ -1,9 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Drawing.Imaging;
 using System.IO;
 using System.Windows.Forms;
+using System.Collections.Generic;
+using System.Drawing.Imaging;
+using System.Drawing;
+using NAudio.Wave;
 
 namespace HomeworkTest
 {
@@ -13,21 +14,26 @@ namespace HomeworkTest
         private Bitmap Image2;
         private Bitmap diff1;
         private Bitmap diff2;
-        PictureBox Box1, Box2, diffBox1, diffBox2;
+        PictureBox Box1, Box2, diffBox;
+        private AudioFileReader audio1, audio2;
+
         private List<Rectangle> diffRegions;
         private List<Rectangle> foundRegions;
         private const int TOLERANCE = 70;
+        private const int diffCount = 0;
 
         public MainForm()
         {
-            this.Width = 1200;
-            this.Height = 600;
+            LoadImages();
+            LoadAudios();
+            this.Width = 3*Image1.Width + 60;
+            this.Height = Image1.Height + 60;
             this.Text = "Find the Difference Game";
 
             Box1 = new PictureBox
             {
-                Width = 300,
-                Height = 400,
+                Width = Image1.Width,
+                Height = Image1.Height,
                 Location = new Point(10, 10),
                 SizeMode = PictureBoxSizeMode.Zoom,
                 BorderStyle = BorderStyle.FixedSingle
@@ -35,25 +41,18 @@ namespace HomeworkTest
 
             Box2 = new PictureBox
             {
-                Width = 300,
-                Height = 400,
-                Location = new Point(315, 10),
+                Width = Image2.Width,
+                Height = Image2.Height,
+                Location = new Point(Image1.Width + 10, 10),
                 SizeMode = PictureBoxSizeMode.Zoom,
                 BorderStyle = BorderStyle.FixedSingle
             };
-            diffBox1 = new PictureBox
+
+            diffBox = new PictureBox
             {
-                Width = 300,
-                Height = 400,
-                Location = new Point(600, 10),
-                SizeMode = PictureBoxSizeMode.Zoom,
-                BorderStyle = BorderStyle.FixedSingle
-            };
-            diffBox2 = new PictureBox
-            {
-                Width = 300,
-                Height = 400,
-                Location = new Point(900, 10),
+                Width = diff1.Width,
+                Height = diff1.Height,
+                Location = new Point(Image1.Width + Image2.Width + 10, 10),
                 SizeMode = PictureBoxSizeMode.Zoom,
                 BorderStyle = BorderStyle.FixedSingle
             };
@@ -63,19 +62,11 @@ namespace HomeworkTest
 
             this.Controls.Add(Box1);
             this.Controls.Add(Box2);
-            this.Controls.Add(diffBox1);
+            this.Controls.Add(diffBox);
 
-            LoadImages();
             Box1.Image = Image1;
-            Box1.Width = Image1.Width;
-            Box1.Height = Image1.Height;
             Box2.Image = Image2;
-            Box2.Width = Image2.Width;
-            Box2.Height = Image2.Height;
-            diffBox1.Image = diff1;
-            diffBox1.Width = diff1.Width;
-            diffBox1.Height = diff1.Height;
-
+            diffBox.Image = diff1;
 
             DetectDifferences();
         }
@@ -93,8 +84,105 @@ namespace HomeworkTest
 
             Image1 = new Bitmap(Path1);
             Image2 = new Bitmap(Path2);
+
+            if (Image1.Width != Image2.Width || Image1.Height != Image2.Height)
+            {
+                Console.WriteLine("Images are not the same size.");
+                return;
+            }
+
             diff1 = new Bitmap(Image1.Width, Image1.Height);
-            diff2 = new Bitmap(Image1.Width, Image1.Height);
+            diff2 = new Bitmap(Image2.Width, Image2.Height);
+        }
+
+        private void LoadAudios()
+        {
+            string Path1 = Path.Combine(Application.StartupPath, "assets", "found.mp3");
+            string Path2 = Path.Combine(Application.StartupPath, "assets", "notfound.mp3");
+
+            if (!File.Exists(Path1) || !File.Exists(Path2))
+            {
+                MessageBox.Show("One or both audios files not found!");
+                return;
+            }
+
+            audio1 = new AudioFileReader(Path1);
+            audio2 = new AudioFileReader(Path2);
+        }
+
+        private void PictureBox_MouseClick(object sender, MouseEventArgs e)
+        {
+            PictureBox clickedBox = sender as PictureBox;
+
+            if (clickedBox.Image == null) return;
+
+            float scaleX = (float)Image1.Width / clickedBox.Width;
+            float scaleY = (float)Image1.Height / clickedBox.Height;
+
+            int imgX = (int)(e.X * scaleX);
+            int imgY = (int)(e.Y * scaleY);
+
+            bool found = false;
+            foreach (var region in diffRegions)
+            {
+                if (region.Contains(imgX, imgY) && !foundRegions.Contains(region))
+                {
+                    found = true;
+                    foundRegions.Add(region);
+                    ShowClickedDifference(Box1);
+                    ShowClickedDifference(Box2);
+                    break;
+
+                    //if (clickedBox == Box1)
+                    //{
+                    //    MessageBox.Show("Box1");
+                    //}
+                    //else if (clickedBox == Box2)
+                    //{
+                    //    MessageBox.Show("Box2");
+                    //}
+                }
+            }
+
+            PlaySound(found);
+            found = !found;
+        }
+
+        private void ShowClickedDifference(PictureBox box)
+        {
+            Bitmap tempImage = new Bitmap(box.Image);
+
+            using (Graphics g = Graphics.FromImage(tempImage))
+            using (Pen pen = new Pen(Color.Green, 3))
+            {
+                foreach (var region in foundRegions)
+                {
+                    g.DrawRectangle(pen, region);
+                }
+            }
+
+            box.Image = tempImage;
+        }
+
+        private void PlaySound(bool found)
+        {
+            using (var outputDevice = new WaveOutEvent())
+            {
+                if (found)
+                {
+                    outputDevice.Init(audio1);
+
+                }
+                else
+                {
+                    outputDevice.Init(audio2);
+                }
+                outputDevice.Play();
+                while (outputDevice.PlaybackState == PlaybackState.Playing)
+                {
+                    System.Threading.Thread.Sleep(100);
+                }
+            }
         }
 
         private void DetectDifferences()
@@ -195,7 +283,6 @@ namespace HomeworkTest
             MergeDiffRegions();
         }
 
-
         private void MergeDiffRegions()
         {
             List<Rectangle> merged = new List<Rectangle>();
@@ -242,88 +329,5 @@ namespace HomeworkTest
             );
             return expanded.IntersectsWith(b);
         }
-
-
-        private void PictureBox_MouseClick(object sender, MouseEventArgs e)
-        {
-            PictureBox clickedBox = sender as PictureBox;
-
-            if (clickedBox.Image == null) return;
-
-            float scaleX = (float)Image1.Width / clickedBox.Width;
-            float scaleY = (float)Image1.Height / clickedBox.Height;
-
-            int imgX = (int)(e.X * scaleX);
-            int imgY = (int)(e.Y * scaleY);
-
-            foreach (var region in diffRegions)
-            {
-                Rectangle expandedRegion = Rectangle.Inflate(region, 5, 5);
-                if (expandedRegion.Contains(imgX, imgY) && !foundRegions.Contains(region))
-                {
-                    foundRegions.Add(region);
-                    ShowClickedDifference(Box1);
-                    ShowClickedDifference(Box2);
-                    break;
-
-                    //if (clickedBox == Box1)
-                    //{
-                    //    MessageBox.Show("Box1");
-                    //}
-                    //else if (clickedBox == Box2)
-                    //{
-                    //    MessageBox.Show("Box2");
-                    //}
-                }
-            }
-        }
-
-        private void ShowClickedDifference(PictureBox box)
-        {
-            Bitmap tempImage = new Bitmap(box.Image);
-
-            using (Graphics g = Graphics.FromImage(tempImage))
-            using (Pen pen = new Pen(Color.Green, 3))
-            {
-                foreach (var region in foundRegions)
-                {
-                    g.DrawRectangle(pen, region);
-                }
-            }
-
-            box.Image = tempImage;
-        }
-
-
-        //private void DrawBoundingBox(PictureBox box, Rectangle region)
-        //{
-        //    using (Graphics g = Graphics.FromImage(diff1))
-        //    {
-        //        using (Pen pen = new Pen(Color.Green, 3))
-        //        {
-        //            g.DrawRectangle(pen, region);
-        //        }
-        //    }
-
-        //    box.Image = null;
-        //    box.Image = diff1;
-        //}
-
-
-        //private void RedrawFoundDifferences(PictureBox box)
-        //{
-        //    Bitmap tempImage = new Bitmap(Image2);
-
-        //    using (Graphics g = Graphics.FromImage(tempImage))
-        //    using (Pen pen = new Pen(Color.Green, 3))
-        //    {
-        //        foreach (var region in foundRegions)
-        //        {
-        //            g.DrawRectangle(pen, region);
-        //        }
-        //    }
-
-        //    box.Image = tempImage;
-        //}
     }
 }
