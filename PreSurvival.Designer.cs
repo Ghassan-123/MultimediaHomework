@@ -1,6 +1,6 @@
 ﻿namespace HomeworkTest
 {
-    partial class Form1
+    partial class PreSurvival
     {
         /// <summary>
         /// Required designer variable.
@@ -28,51 +28,63 @@
         /// </summary>
         private void InitializeComponent()
         {
-            button1 = new System.Windows.Forms.Button();
+            button3 = new System.Windows.Forms.Button();
             button2 = new System.Windows.Forms.Button();
+            button1 = new System.Windows.Forms.Button();
             SuspendLayout();
             // 
-            // button1
+            // button3
             // 
-            button1.Location = new System.Drawing.Point(108, 166);
-            button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            button1.Name = "button1";
-            button1.Size = new System.Drawing.Size(209, 71);
-            button1.TabIndex = 0;
-            button1.Text = "TImed";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
+            button3.Location = new System.Drawing.Point(106, 283);
+            button3.Margin = new System.Windows.Forms.Padding(2);
+            button3.Name = "button3";
+            button3.Size = new System.Drawing.Size(169, 59);
+            button3.TabIndex = 5;
+            button3.Text = "hard";
+            button3.UseVisualStyleBackColor = true;
+            button3.Click += button3_Click;
             // 
             // button2
             // 
-            button2.Location = new System.Drawing.Point(108, 281);
-            button2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            button2.Location = new System.Drawing.Point(106, 158);
+            button2.Margin = new System.Windows.Forms.Padding(2);
             button2.Name = "button2";
-            button2.Size = new System.Drawing.Size(209, 71);
-            button2.TabIndex = 1;
-            button2.Text = "Survival";
+            button2.Size = new System.Drawing.Size(169, 59);
+            button2.TabIndex = 4;
+            button2.Text = "medium";
             button2.UseVisualStyleBackColor = true;
             button2.Click += button2_Click;
             // 
-            // Form1
+            // button1
+            // 
+            button1.Location = new System.Drawing.Point(106, 31);
+            button1.Margin = new System.Windows.Forms.Padding(2);
+            button1.Name = "button1";
+            button1.Size = new System.Drawing.Size(169, 59);
+            button1.TabIndex = 3;
+            button1.Text = "easy";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
+            // 
+            // PreSurvival
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             BackColor = System.Drawing.Color.RosyBrown;
-            ClientSize = new System.Drawing.Size(443, 450);
+            ClientSize = new System.Drawing.Size(402, 373);
+            Controls.Add(button3);
             Controls.Add(button2);
             Controls.Add(button1);
             FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            Name = "Form1";
-            Text = "Form1";
-            Load += Form1_Load;
+            Name = "PreSurvival";
+            Text = "PreSurvival";
             ResumeLayout(false);
         }
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button1;
     }
 }

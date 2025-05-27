@@ -10,35 +10,31 @@ using System.Windows.Forms;
 
 namespace HomeworkTest
 {
-    public partial class preTimed : Form
+    public partial class PreSurvival : Form
     {
-        private Form Timed;
-        public preTimed()
+        public PreSurvival()
         {
             InitializeComponent();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            showTimed(60); 
-            
+            showSurvival(7);
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            showTimed(45);
-            
+            showSurvival(5);
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            showTimed(30);
+            showSurvival(3);
         }
-
-        private void showTimed(int time)
+        private void showSurvival(int clicks)
         {
-            Timed = new Timed(time);
-            Timed.Show();
+            Survival survival = new Survival(clicks);
+            survival.Show();
             this.Hide();
         }
     }

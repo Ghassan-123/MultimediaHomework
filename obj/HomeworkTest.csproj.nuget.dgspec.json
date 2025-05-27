@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "D:\\projects\\C#\\MultimediaHomework\\HomeworkTest.csproj": {}
+    "C:\\Users\\TECH SHOP\\Documents\\Uni\\AR\\MultimediaHomework\\HomeworkTest.csproj": {}
   },
   "projects": {
-    "D:\\projects\\C#\\MultimediaHomework\\HomeworkTest.csproj": {
+    "C:\\Users\\TECH SHOP\\Documents\\Uni\\AR\\MultimediaHomework\\HomeworkTest.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\projects\\C#\\MultimediaHomework\\HomeworkTest.csproj",
+        "projectUniqueName": "C:\\Users\\TECH SHOP\\Documents\\Uni\\AR\\MultimediaHomework\\HomeworkTest.csproj",
         "projectName": "HomeworkTest",
-        "projectPath": "D:\\projects\\C#\\MultimediaHomework\\HomeworkTest.csproj",
-        "packagesPath": "C:\\Users\\Mohamed Al-majzoub\\.nuget\\packages\\",
-        "outputPath": "D:\\projects\\C#\\MultimediaHomework\\obj\\",
+        "projectPath": "C:\\Users\\TECH SHOP\\Documents\\Uni\\AR\\MultimediaHomework\\HomeworkTest.csproj",
+        "packagesPath": "C:\\Users\\TECH SHOP\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\TECH SHOP\\Documents\\Uni\\AR\\MultimediaHomework\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Mohamed Al-majzoub\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\TECH SHOP\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -70,6 +70,24 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[6.0.36, 6.0.36]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Host.win-x64",
+              "version": "[6.0.36, 6.0.36]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[6.0.36, 6.0.36]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[6.0.36, 6.0.36]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"

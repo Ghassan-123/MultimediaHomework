@@ -29,6 +29,7 @@ namespace HomeworkTest
 
         private Timer countdownTimer;
         private int countdownValue;
+        private int differences;
 
         public Timed(int x)
         {
@@ -36,14 +37,16 @@ namespace HomeworkTest
             countdownValue = x;
             LoadImages();
             LoadAudios();
+            Box1 = pictureBox1;
+            Box2 = pictureBox2;
             pictureBox1.Image = Image1;
             pictureBox2.Image = Image2;
 
             Box1.MouseClick += (s, e) => pictureBox1_Click(s, e);
-            Box2.MouseClick += (s, e) => pictureBox2_Click(s, e);
             DetectDifferences();
 
             richTextBox1.Text = countdownValue.ToString(); // Show initial value
+            richTextBox2.Text = differences.ToString();
 
             countdownTimer = new Timer();
             countdownTimer.Interval = 1000; // 1 second
@@ -77,6 +80,55 @@ namespace HomeworkTest
         {
             //logic for ending
             this.Close();
+           
+        }
+        private void timeWon()
+        {
+            // Stop the timer
+            countdownTimer.Stop();
+
+            // Create a label with the winning message
+            Label winLabel = new Label();
+            winLabel.Text = "YOU WON!!!";
+            winLabel.Font = new Font("Arial", 48, FontStyle.Bold);
+            winLabel.ForeColor = Color.Green;
+            winLabel.AutoSize = false; // Disable AutoSize to manually control dimensions
+            winLabel.TextAlign = ContentAlignment.MiddleCenter; // Center-align text inside the label
+
+            // Calculate the required size for the text
+            using (Graphics g = this.CreateGraphics())
+            {
+                SizeF textSize = g.MeasureString(winLabel.Text, winLabel.Font);
+                winLabel.Width = (int)textSize.Width + 20; // Add padding
+                winLabel.Height = (int)textSize.Height + 20;
+            }
+
+            // Position the label in the exact center of the form
+            winLabel.Location = new Point(
+                (this.ClientSize.Width - winLabel.Width) / 2,
+                (this.ClientSize.Height - winLabel.Height) / 2
+            );
+
+            // Ensure the label stays centered even if the form is resized
+            winLabel.Anchor = AnchorStyles.None;
+
+            // Add the label to the form and bring it to the front
+            this.Controls.Add(winLabel);
+            winLabel.BringToFront();
+
+            // Optional: Disable further clicks on the picture boxes
+            Box1.Enabled = false;
+            Box2.Enabled = false;
+
+            // Optional: Close the form after a delay (e.g., 3 seconds)
+            Timer closeTimer = new Timer();
+            closeTimer.Interval = 3000;
+            closeTimer.Tick += (s, e) =>
+            {
+                closeTimer.Stop();
+                this.Close();
+            };
+            closeTimer.Start();
         }
         private void LoadImages()
         {
@@ -104,7 +156,38 @@ namespace HomeworkTest
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
+            MouseEventArgs me = e as MouseEventArgs;
+            if (me == null) return;
+            PictureBox clickedBox = sender as PictureBox;
 
+            if (clickedBox.Image == null) return;
+
+            float scaleX = (float)Image1.Width / clickedBox.Width;
+            float scaleY = (float)Image1.Height / clickedBox.Height;
+
+            int imgX = (int)(me.X * scaleX);
+            int imgY = (int)(me.Y * scaleY);
+
+            bool found = false;
+
+            foreach (var region in diffRegions)
+            {
+                if (region.Contains(imgX, imgY) && !foundRegions.Contains(region))
+                {
+                    found = true;
+                    differences -= 1;
+                    richTextBox2.Text = differences.ToString();
+                    foundRegions.Add(region);
+                    ShowClickedDifference(Box1);
+                    ShowClickedDifference(Box2);
+                    if (differences <= 0) {
+                        timeWon();
+                    }
+                    break;
+                }
+            }
+            PlaySound(found);
+            _ = !found;
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)
@@ -116,6 +199,7 @@ namespace HomeworkTest
         {
             const int BLOCK_SIZE = 10; // Size of each comparison block
             diffRegions = new List<Rectangle>();
+            
             foundRegions = new List<Rectangle>();
 
             Rectangle rect = new Rectangle(0, 0, Image1.Width, Image1.Height);
@@ -207,6 +291,7 @@ namespace HomeworkTest
             diff1.UnlockBits(dataDiff1);
             diff2.UnlockBits(dataDiff2);
 
+            
             MergeDiffRegions();
         }
 
@@ -245,6 +330,7 @@ namespace HomeworkTest
             }
 
             diffRegions = merged;
+            differences = diffRegions.Count;
         }
 
         private bool AreAdjacentOrOverlapping(Rectangle a, Rectangle b)
@@ -271,34 +357,7 @@ namespace HomeworkTest
             audio2 = new SoundPlayer(Path2);
         }
 
-        private void PictureBox_MouseClick(object sender, MouseEventArgs e)
-        {
-            PictureBox clickedBox = sender as PictureBox;
-
-            if (clickedBox.Image == null) return;
-
-            float scaleX = (float)Image1.Width / clickedBox.Width;
-            float scaleY = (float)Image1.Height / clickedBox.Height;
-
-            int imgX = (int)(e.X * scaleX);
-            int imgY = (int)(e.Y * scaleY);
-
-            bool found = false;
-
-            foreach (var region in diffRegions)
-            {
-                if (region.Contains(imgX, imgY) && !foundRegions.Contains(region))
-                {
-                    found = true;
-                    foundRegions.Add(region);
-                    ShowClickedDifference(Box1);
-                    ShowClickedDifference(Box2);
-                    break;
-                }
-            }
-            PlaySound(found);
-            _ = !found;
-        }
+        
 
         private void ShowClickedDifference(PictureBox box)
         {

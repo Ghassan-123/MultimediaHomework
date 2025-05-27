@@ -24,9 +24,16 @@ namespace HomeworkTest
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Form Timed = new Form();
-            Timed.Show();
-            this.Close();
+            preTimed preTimed = new preTimed();
+            preTimed.Show();
+            this.Hide();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            PreSurvival preSurvival = new PreSurvival(); 
+            preSurvival.Show();
+            this.Hide();
         }
     }
 }

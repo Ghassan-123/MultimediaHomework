@@ -75,3 +75,40 @@ D:\projects\C#\MultimediaHomework\obj\Debug\net6.0-windows\HomeworkTest.sourceli
 D:\projects\C#\MultimediaHomework\obj\Debug\net6.0-windows\HomeworkTest.dll
 D:\projects\C#\MultimediaHomework\obj\Debug\net6.0-windows\refint\HomeworkTest.dll
 D:\projects\C#\MultimediaHomework\obj\Debug\net6.0-windows\HomeworkTest.pdb
+C:\Users\TECH SHOP\Documents\Uni\AR\MultimediaHomework\obj\Debug\net6.0-windows\HomeworkTest.csproj.AssemblyReference.cache
+C:\Users\TECH SHOP\Documents\Uni\AR\MultimediaHomework\obj\Debug\net6.0-windows\HomeworkTest.Form1.resources
+C:\Users\TECH SHOP\Documents\Uni\AR\MultimediaHomework\obj\Debug\net6.0-windows\HomeworkTest.preTimed.resources
+C:\Users\TECH SHOP\Documents\Uni\AR\MultimediaHomework\obj\Debug\net6.0-windows\HomeworkTest.Properties.Resources.resources
+C:\Users\TECH SHOP\Documents\Uni\AR\MultimediaHomework\obj\Debug\net6.0-windows\HomeworkTest.Timed.resources
+C:\Users\TECH SHOP\Documents\Uni\AR\MultimediaHomework\obj\Debug\net6.0-windows\HomeworkTest.csproj.GenerateResource.cache
+C:\Users\TECH SHOP\Documents\Uni\AR\MultimediaHomework\obj\Debug\net6.0-windows\HomeworkTest.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\TECH SHOP\Documents\Uni\AR\MultimediaHomework\obj\Debug\net6.0-windows\HomeworkTest.AssemblyInfoInputs.cache
+C:\Users\TECH SHOP\Documents\Uni\AR\MultimediaHomework\obj\Debug\net6.0-windows\HomeworkTest.AssemblyInfo.cs
+C:\Users\TECH SHOP\Documents\Uni\AR\MultimediaHomework\obj\Debug\net6.0-windows\HomeworkTest.csproj.CoreCompileInputs.cache
+C:\Users\TECH SHOP\Documents\Uni\AR\MultimediaHomework\obj\Debug\net6.0-windows\HomeworkTest.sourcelink.json
+C:\Users\TECH SHOP\Documents\Uni\AR\MultimediaHomework\bin\Debug\net6.0-windows\HomeworkTest.exe
+C:\Users\TECH SHOP\Documents\Uni\AR\MultimediaHomework\bin\Debug\net6.0-windows\HomeworkTest.deps.json
+C:\Users\TECH SHOP\Documents\Uni\AR\MultimediaHomework\bin\Debug\net6.0-windows\HomeworkTest.runtimeconfig.json
+C:\Users\TECH SHOP\Documents\Uni\AR\MultimediaHomework\bin\Debug\net6.0-windows\HomeworkTest.dll
+C:\Users\TECH SHOP\Documents\Uni\AR\MultimediaHomework\bin\Debug\net6.0-windows\HomeworkTest.pdb
+C:\Users\TECH SHOP\Documents\Uni\AR\MultimediaHomework\bin\Debug\net6.0-windows\Emgu.CV.dll
+C:\Users\TECH SHOP\Documents\Uni\AR\MultimediaHomework\bin\Debug\net6.0-windows\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\TECH SHOP\Documents\Uni\AR\MultimediaHomework\bin\Debug\net6.0-windows\NAudio.dll
+C:\Users\TECH SHOP\Documents\Uni\AR\MultimediaHomework\bin\Debug\net6.0-windows\NAudio.Asio.dll
+C:\Users\TECH SHOP\Documents\Uni\AR\MultimediaHomework\bin\Debug\net6.0-windows\NAudio.Core.dll
+C:\Users\TECH SHOP\Documents\Uni\AR\MultimediaHomework\bin\Debug\net6.0-windows\NAudio.Midi.dll
+C:\Users\TECH SHOP\Documents\Uni\AR\MultimediaHomework\bin\Debug\net6.0-windows\NAudio.Wasapi.dll
+C:\Users\TECH SHOP\Documents\Uni\AR\MultimediaHomework\bin\Debug\net6.0-windows\NAudio.WinForms.dll
+C:\Users\TECH SHOP\Documents\Uni\AR\MultimediaHomework\bin\Debug\net6.0-windows\NAudio.WinMM.dll
+C:\Users\TECH SHOP\Documents\Uni\AR\MultimediaHomework\bin\Debug\net6.0-windows\System.IO.Pipelines.dll
+C:\Users\TECH SHOP\Documents\Uni\AR\MultimediaHomework\bin\Debug\net6.0-windows\System.Text.Encodings.Web.dll
+C:\Users\TECH SHOP\Documents\Uni\AR\MultimediaHomework\bin\Debug\net6.0-windows\System.Text.Json.dll
+C:\Users\TECH SHOP\Documents\Uni\AR\MultimediaHomework\obj\Debug\net6.0-windows\Homework.453409DB.Up2Date
+C:\Users\TECH SHOP\Documents\Uni\AR\MultimediaHomework\obj\Debug\net6.0-windows\HomeworkTest.dll
+C:\Users\TECH SHOP\Documents\Uni\AR\MultimediaHomework\obj\Debug\net6.0-windows\refint\HomeworkTest.dll
+C:\Users\TECH SHOP\Documents\Uni\AR\MultimediaHomework\obj\Debug\net6.0-windows\HomeworkTest.pdb
+C:\Users\TECH SHOP\Documents\Uni\AR\MultimediaHomework\obj\Debug\net6.0-windows\HomeworkTest.genruntimeconfig.cache
+C:\Users\TECH SHOP\Documents\Uni\AR\MultimediaHomework\obj\Debug\net6.0-windows\ref\HomeworkTest.dll
+C:\Users\TECH SHOP\Documents\Uni\AR\MultimediaHomework\obj\Debug\net6.0-windows\HomeworkTest.Survival.resources
+C:\Users\TECH SHOP\Documents\Uni\AR\MultimediaHomework\obj\Debug\net6.0-windows\HomeworkTest.Form2.resources
+C:\Users\TECH SHOP\Documents\Uni\AR\MultimediaHomework\obj\Debug\net6.0-windows\HomeworkTest.PreSurvival.resources

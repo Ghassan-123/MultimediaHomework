@@ -4,10 +4,16 @@
     <Compile Update="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="MainForm.cs">
+    <Compile Update="Form2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="PreSurvival.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="preTimed.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Survival.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Timed.cs">
