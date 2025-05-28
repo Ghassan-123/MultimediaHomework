@@ -20,26 +20,54 @@ namespace HomeworkTest
 
         private void button1_Click(object sender, EventArgs e)
         {
-            showTimed(60); 
-            
+            showTimed(60,1);
+
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            showTimed(45);
-            
+            showTimed(45,2);
+
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            showTimed(30);
+            showTimed(30,3);
         }
 
-        private void showTimed(int time)
+        private void exitButton_Click(object sender, EventArgs e)
         {
-            Timed = new Timed(time);
+            Application.Exit();
+            // Hover effects
+            exitButton.MouseEnter += (s, e) =>
+            {
+                exitButton.ForeColor = Color.White;
+                exitButton.BackColor = Color.Red;
+            };
+            exitButton.MouseLeave += (s, e) =>
+            {
+                exitButton.ForeColor = Color.Gray;
+                exitButton.BackColor = Color.Transparent;
+            };
+        }
+
+        private void back_Click(object sender, EventArgs e)
+        {
+            Form1 form1 = new Form1();
+            form1.Show();
+            this.Hide();
+        }
+
+        private void showTimed(int time,int d)
+        {
+            Timed = new Timed(time,d);
             Timed.Show();
             this.Hide();
+        }
+
+        private void preTimed_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

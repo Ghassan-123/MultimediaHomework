@@ -1,78 +1,87 @@
-﻿namespace HomeworkTest
+﻿using System;
+using System.Drawing;
+using System.Windows.Forms;
+
+namespace HomeworkTest
 {
-    partial class Form1
+    public partial class Form1 : Form
     {
-        /// <summary>
-        /// Required designer variable.
-        /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        private Label titleLabel;
+        private Button button1;
+        private Button button2;
+        private Button exitButton;
 
-        /// <summary>
-        /// Clean up any resources being used.
-        /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing && (components != null))
-            {
-                components.Dispose();
-            }
-            base.Dispose(disposing);
-        }
-
-        #region Windows Form Designer generated code
-
-        /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
-        /// </summary>
         private void InitializeComponent()
         {
-            button1 = new System.Windows.Forms.Button();
-            button2 = new System.Windows.Forms.Button();
+            titleLabel = new Label();
+            button1 = new Button();
+            button2 = new Button();
+            exitButton = new Button();
             SuspendLayout();
+            //
+            //label 
+            //
+            titleLabel.Text = "Difference Game";
+            titleLabel.Font = new Font("Calibri", 30F, FontStyle.Bold);
+            titleLabel.ForeColor = Color.Black;
+            titleLabel.AutoSize = true; // Automatically size to fit text
+            titleLabel.Location = new Point(200, 100); // Position on form
             // 
             // button1
             // 
-            button1.Location = new System.Drawing.Point(108, 166);
-            button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            button1.BackgroundImageLayout = ImageLayout.Center;
+            button1.Font = new Font("Calibri", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            button1.Location = new Point(400, 300);
             button1.Name = "button1";
-            button1.Size = new System.Drawing.Size(209, 71);
+            button1.Size = new Size(200, 100);
             button1.TabIndex = 0;
-            button1.Text = "TImed";
+            button1.Text = "Timed";
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click;
             // 
             // button2
             // 
-            button2.Location = new System.Drawing.Point(108, 281);
-            button2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            button2.Font = new Font("Calibri", 10.125F, FontStyle.Regular, GraphicsUnit.Point);
+            button2.Location = new Point(400, 500);
             button2.Name = "button2";
-            button2.Size = new System.Drawing.Size(209, 71);
+            button2.Size = new Size(200, 100);
             button2.TabIndex = 1;
             button2.Text = "Survival";
             button2.UseVisualStyleBackColor = true;
             button2.Click += button2_Click;
             // 
+            // exitButton
+            // 
+            exitButton.BackColor = Color.Transparent;
+            exitButton.FlatAppearance.BorderSize = 0;
+            exitButton.FlatStyle = FlatStyle.Flat;
+            exitButton.Font = new Font("Calibri", 10F, FontStyle.Bold, GraphicsUnit.Point);
+            exitButton.ForeColor = Color.Black;
+            exitButton.Location = new Point(950, 0);
+            exitButton.Name = "exitButton";
+            exitButton.Size = new Size(50, 60);
+            exitButton.TabIndex = 2;
+            exitButton.TabStop = false;
+            exitButton.Text = "✕";
+            exitButton.UseVisualStyleBackColor = false;
+            exitButton.Click += exitButton_Click;
+            // 
             // Form1
             // 
-            AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
-            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            BackColor = System.Drawing.Color.RosyBrown;
-            ClientSize = new System.Drawing.Size(443, 450);
+            AutoScaleDimensions = new SizeF(13F, 32F);
+            AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.White;
+            ClientSize = new Size(1000, 1000);
+            Controls.Add(titleLabel);
+            Controls.Add(exitButton);
             Controls.Add(button2);
             Controls.Add(button1);
-            FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            FormBorderStyle = FormBorderStyle.None;
             Name = "Form1";
-            Text = "Form1";
-            Load += Form1_Load;
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Homework Test";
+            Load += Form1_Load_1;
             ResumeLayout(false);
         }
-
-        #endregion
-
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
     }
 }

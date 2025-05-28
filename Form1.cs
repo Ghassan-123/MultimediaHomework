@@ -31,9 +31,30 @@ namespace HomeworkTest
 
         private void button2_Click(object sender, EventArgs e)
         {
-            PreSurvival preSurvival = new PreSurvival(); 
+            PreSurvival preSurvival = new PreSurvival();
             preSurvival.Show();
             this.Hide();
+        }
+
+        private void exitButton_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+            // Hover effects
+            exitButton.MouseEnter += (s, e) =>
+            {
+                exitButton.ForeColor = Color.White;
+                exitButton.BackColor = Color.Red;
+            };
+            exitButton.MouseLeave += (s, e) =>
+            {
+                exitButton.ForeColor = Color.Gray;
+                exitButton.BackColor = Color.Transparent;
+            };
+        }
+
+        private void Form1_Load_1(object sender, EventArgs e)
+        {
+
         }
     }
 }

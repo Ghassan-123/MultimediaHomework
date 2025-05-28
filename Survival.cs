@@ -15,29 +15,24 @@ namespace HomeworkTest
 {
     public partial class Survival : Form
     {
-        public Survival()
-        {
-            InitializeComponent();
-        }
+        private int difficulty;
         private Bitmap Image1;
         private Bitmap Image2;
         private Bitmap diff1;
         private Bitmap diff2;
         PictureBox Box1, Box2, diffBox;
         private SoundPlayer audio1, audio2;
-
         private List<Rectangle> diffRegions;
         private List<Rectangle> foundRegions;
         private const int TOLERANCE = 70;
         private const int diffCount = 0;
-
-        private Timer countdownTimer;
         private int clicksValue;
         private int differences;
 
-        public Survival(int x)
+        public Survival(int x,int d)
         {
             InitializeComponent();
+            difficulty = d;
             clicksValue = x;
             LoadImages();
             LoadAudios();
@@ -45,36 +40,94 @@ namespace HomeworkTest
             Box2 = pictureBox2;
             pictureBox1.Image = Image1;
             pictureBox2.Image = Image2;
-
-            Box2.MouseClick += (s, e) => pictureBox1_Click(s, e);
             DetectDifferences();
-
             richTextBox1.Text = clicksValue.ToString(); // Show initial value
             richTextBox2.Text = differences.ToString();
-
-            countdownTimer = new Timer();
-            countdownTimer.Interval = 1000; // 1 second
-            countdownTimer.Tick += timer1_Tick;
-            countdownTimer.Start();
-
         }
 
-        private void Timed_Load(object sender, EventArgs e)
+        private void exitButton_Click(object sender, EventArgs e)
         {
-
+            Application.Exit();
+            // Hover effects
+            exitButton.MouseEnter += (s, e) =>
+            {
+                exitButton.ForeColor = Color.White;
+                exitButton.BackColor = Color.Red;
+            };
+            exitButton.MouseLeave += (s, e) =>
+            {
+                exitButton.ForeColor = Color.Gray;
+                exitButton.BackColor = Color.Transparent;
+            };
         }
-
-
 
         private void clicksEnded()
         {
-            //logic for ending
-            this.Close();
+            // Create a label with the winning message
+            Label winLabel = new Label();
+            winLabel.Text = "YOU LOSE!";
+            winLabel.Font = new Font("Calibri", 48, FontStyle.Bold);
+            winLabel.ForeColor = Color.Green;
+            winLabel.AutoSize = false; // Disable AutoSize to manually control dimensions
+            winLabel.TextAlign = ContentAlignment.MiddleCenter; // Center-align text inside the label
+
+            // Calculate the required size for the text
+            using (Graphics g = this.CreateGraphics())
+            {
+                SizeF textSize = g.MeasureString(winLabel.Text, winLabel.Font);
+                winLabel.Width = (int)textSize.Width + 20; // Add padding
+                winLabel.Height = (int)textSize.Height + 20;
+            }
+
+            // Position the label in the exact center of the form
+            winLabel.Location = new Point(
+                (this.ClientSize.Width - winLabel.Width) / 2,
+                (this.ClientSize.Height - winLabel.Height) / 2
+            );
+
+            // Ensure the label stays centered even if the form is resized
+            winLabel.Anchor = AnchorStyles.None;
+
+            // Add the label to the form and bring it to the front
+            this.Controls.Add(winLabel);
+            winLabel.BringToFront();
+
+            // Optional: Disable further clicks on the picture boxes
+            Box1.Enabled = false;
+            Box2.Enabled = false;
+
+            // Optional: Close the form after a delay (e.g., 3 seconds)
+            Timer closeTimer = new Timer();
+            closeTimer.Interval = 3000;
+            closeTimer.Tick += (s, e) =>
+            {
+                closeTimer.Stop();
+                Form1 form1 = new Form1();
+                form1.Show();
+                this.Hide();
+            };
+            closeTimer.Start();
+            
         }
         private void LoadImages()
         {
-            string Path1 = Path.Combine(Application.StartupPath, "assets", "sample5.jpg");
-            string Path2 = Path.Combine(Application.StartupPath, "assets", "sample6.jpg");
+            string Path1 = "";
+            string Path2 = "";
+            if (difficulty == 1)
+            {
+                Path1 = Path.Combine(Application.StartupPath, "assets", "sample1.jpg");
+                Path2 = Path.Combine(Application.StartupPath, "assets", "sample2.jpg");
+            }
+            else if (difficulty == 2)
+            {
+                Path1 = Path.Combine(Application.StartupPath, "assets", "sample3.jpg");
+                Path2 = Path.Combine(Application.StartupPath, "assets", "sample4.jpg");
+            }
+            else
+            {
+                Path1 = Path.Combine(Application.StartupPath, "assets", "sample5.jpg");
+                Path2 = Path.Combine(Application.StartupPath, "assets", "sample6.jpg");
+            }            
 
             if (!File.Exists(Path1) || !File.Exists(Path2))
             {
@@ -97,7 +150,7 @@ namespace HomeworkTest
 
 
 
-        private void pictureBox1_Click(object sender, EventArgs e)
+        private void pictureBox_Click(object sender, EventArgs e)
         {
             MouseEventArgs me = e as MouseEventArgs;
             if (me == null) return;
@@ -142,14 +195,10 @@ namespace HomeworkTest
 
         private void survivalWon()
         {
-
-            // Stop the timer
-            countdownTimer.Stop();
-
             // Create a label with the winning message
             Label winLabel = new Label();
-            winLabel.Text = "YOU WON!!!";
-            winLabel.Font = new Font("Arial", 48, FontStyle.Bold);
+            winLabel.Text = "YOU WON!";
+            winLabel.Font = new Font("Calibri", 48, FontStyle.Bold);
             winLabel.ForeColor = Color.Green;
             winLabel.AutoSize = false; // Disable AutoSize to manually control dimensions
             winLabel.TextAlign = ContentAlignment.MiddleCenter; // Center-align text inside the label
@@ -185,7 +234,9 @@ namespace HomeworkTest
             closeTimer.Tick += (s, e) =>
             {
                 closeTimer.Stop();
-                this.Close();
+                Form1 form1 = new Form1();
+                form1.Show();
+                this.Hide();
             };
             closeTimer.Start();
         }
@@ -350,35 +401,6 @@ namespace HomeworkTest
             audio2 = new SoundPlayer(Path2);
         }
 
-        private void PictureBox_MouseClick(object sender, MouseEventArgs e)
-        {
-            PictureBox clickedBox = sender as PictureBox;
-
-            if (clickedBox.Image == null) return;
-
-            float scaleX = (float)Image1.Width / clickedBox.Width;
-            float scaleY = (float)Image1.Height / clickedBox.Height;
-
-            int imgX = (int)(e.X * scaleX);
-            int imgY = (int)(e.Y * scaleY);
-
-            bool found = false;
-
-            foreach (var region in diffRegions)
-            {
-                if (region.Contains(imgX, imgY) && !foundRegions.Contains(region))
-                {
-                    found = true;
-                    foundRegions.Add(region);
-                    ShowClickedDifference(Box1);
-                    ShowClickedDifference(Box2);
-                    break;
-                }
-            }
-            PlaySound(found);
-            _ = !found;
-        }
-
         private void ShowClickedDifference(PictureBox box)
         {
             Bitmap tempImage = new Bitmap(box.Image);
@@ -401,16 +423,6 @@ namespace HomeworkTest
                 audio1?.Play();   // plays asynchronously
             else
                 audio2?.Play();   // plays asynchronously
-        }
-
-        private void richTextBox2_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-
         }
     }
 }

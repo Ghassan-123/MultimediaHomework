@@ -62,7 +62,6 @@ D:\ITE\year 4\Multimedia\MultimediaHomework\bin\Debug\net6.0-windows\System.Text
 D:\ITE\year 4\Multimedia\MultimediaHomework\obj\Debug\net6.0-windows\HomeworkTest.csproj.CopyComplete
 D:\projects\C#\MultimediaHomework\obj\Debug\net6.0-windows\HomeworkTest.csproj.AssemblyReference.cache
 D:\projects\C#\MultimediaHomework\obj\Debug\net6.0-windows\HomeworkTest.Form1.resources
-D:\projects\C#\MultimediaHomework\obj\Debug\net6.0-windows\HomeworkTest.MainForm.resources
 D:\projects\C#\MultimediaHomework\obj\Debug\net6.0-windows\HomeworkTest.preTimed.resources
 D:\projects\C#\MultimediaHomework\obj\Debug\net6.0-windows\HomeworkTest.Properties.Resources.resources
 D:\projects\C#\MultimediaHomework\obj\Debug\net6.0-windows\HomeworkTest.Timed.resources
@@ -112,3 +111,25 @@ C:\Users\TECH SHOP\Documents\Uni\AR\MultimediaHomework\obj\Debug\net6.0-windows\
 C:\Users\TECH SHOP\Documents\Uni\AR\MultimediaHomework\obj\Debug\net6.0-windows\HomeworkTest.Survival.resources
 C:\Users\TECH SHOP\Documents\Uni\AR\MultimediaHomework\obj\Debug\net6.0-windows\HomeworkTest.Form2.resources
 C:\Users\TECH SHOP\Documents\Uni\AR\MultimediaHomework\obj\Debug\net6.0-windows\HomeworkTest.PreSurvival.resources
+D:\projects\C#\MultimediaHomework\bin\Debug\net6.0-windows\HomeworkTest.exe
+D:\projects\C#\MultimediaHomework\bin\Debug\net6.0-windows\HomeworkTest.deps.json
+D:\projects\C#\MultimediaHomework\bin\Debug\net6.0-windows\HomeworkTest.runtimeconfig.json
+D:\projects\C#\MultimediaHomework\bin\Debug\net6.0-windows\HomeworkTest.dll
+D:\projects\C#\MultimediaHomework\bin\Debug\net6.0-windows\HomeworkTest.pdb
+D:\projects\C#\MultimediaHomework\bin\Debug\net6.0-windows\Emgu.CV.dll
+D:\projects\C#\MultimediaHomework\bin\Debug\net6.0-windows\Microsoft.Bcl.AsyncInterfaces.dll
+D:\projects\C#\MultimediaHomework\bin\Debug\net6.0-windows\NAudio.dll
+D:\projects\C#\MultimediaHomework\bin\Debug\net6.0-windows\NAudio.Asio.dll
+D:\projects\C#\MultimediaHomework\bin\Debug\net6.0-windows\NAudio.Core.dll
+D:\projects\C#\MultimediaHomework\bin\Debug\net6.0-windows\NAudio.Midi.dll
+D:\projects\C#\MultimediaHomework\bin\Debug\net6.0-windows\NAudio.Wasapi.dll
+D:\projects\C#\MultimediaHomework\bin\Debug\net6.0-windows\NAudio.WinForms.dll
+D:\projects\C#\MultimediaHomework\bin\Debug\net6.0-windows\NAudio.WinMM.dll
+D:\projects\C#\MultimediaHomework\bin\Debug\net6.0-windows\System.IO.Pipelines.dll
+D:\projects\C#\MultimediaHomework\bin\Debug\net6.0-windows\System.Text.Encodings.Web.dll
+D:\projects\C#\MultimediaHomework\bin\Debug\net6.0-windows\System.Text.Json.dll
+D:\projects\C#\MultimediaHomework\obj\Debug\net6.0-windows\HomeworkTest.PreSurvival.resources
+D:\projects\C#\MultimediaHomework\obj\Debug\net6.0-windows\HomeworkTest.Survival.resources
+D:\projects\C#\MultimediaHomework\obj\Debug\net6.0-windows\Homework.453409DB.Up2Date
+D:\projects\C#\MultimediaHomework\obj\Debug\net6.0-windows\HomeworkTest.genruntimeconfig.cache
+D:\projects\C#\MultimediaHomework\obj\Debug\net6.0-windows\ref\HomeworkTest.dll
