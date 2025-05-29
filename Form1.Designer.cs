@@ -25,13 +25,13 @@ namespace HomeworkTest
             titleLabel.Font = new Font("Calibri", 30F, FontStyle.Bold);
             titleLabel.ForeColor = Color.Black;
             titleLabel.AutoSize = true; // Automatically size to fit text
-            titleLabel.Location = new Point(200, 100); // Position on form
+            titleLabel.Location = new Point(100, 100); // Position on form
             // 
             // button1
             // 
             button1.BackgroundImageLayout = ImageLayout.Center;
             button1.Font = new Font("Calibri", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            button1.Location = new Point(400, 300);
+            button1.Location = new Point(300, 300);
             button1.Name = "button1";
             button1.Size = new Size(200, 100);
             button1.TabIndex = 0;
@@ -42,7 +42,7 @@ namespace HomeworkTest
             // button2
             // 
             button2.Font = new Font("Calibri", 10.125F, FontStyle.Regular, GraphicsUnit.Point);
-            button2.Location = new Point(400, 500);
+            button2.Location = new Point(300, 500);
             button2.Name = "button2";
             button2.Size = new Size(200, 100);
             button2.TabIndex = 1;
@@ -57,7 +57,7 @@ namespace HomeworkTest
             exitButton.FlatStyle = FlatStyle.Flat;
             exitButton.Font = new Font("Calibri", 10F, FontStyle.Bold, GraphicsUnit.Point);
             exitButton.ForeColor = Color.Black;
-            exitButton.Location = new Point(950, 0);
+            exitButton.Location = new Point(750, 0);
             exitButton.Name = "exitButton";
             exitButton.Size = new Size(50, 60);
             exitButton.TabIndex = 2;
@@ -70,7 +70,7 @@ namespace HomeworkTest
             // 
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(1000, 1000);
+            ClientSize = new Size(800, 800);
             Controls.Add(titleLabel);
             Controls.Add(exitButton);
             Controls.Add(button2);

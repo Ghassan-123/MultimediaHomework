@@ -29,14 +29,14 @@ namespace HomeworkTest
             titleLabel.Font = new Font("Calibri", 30F, FontStyle.Bold);
             titleLabel.ForeColor = Color.Black;
             titleLabel.AutoSize = true; // Automatically size to fit text
-            titleLabel.Location = new Point(150, 100); // Position on form
+            titleLabel.Location = new Point(50, 100); // Position on form
             // 
             // button1
             // 
             button1.BackColor = System.Drawing.Color.White;
             button1.FlatStyle = FlatStyle.Flat;
             button1.Font = new System.Drawing.Font("Calibri", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            button1.Location = new System.Drawing.Point(400, 300);
+            button1.Location = new System.Drawing.Point(300, 300);
             button1.Name = "button1";
             button1.Size = new System.Drawing.Size(200, 100);
             button1.TabIndex = 0;
@@ -49,7 +49,7 @@ namespace HomeworkTest
             button2.BackColor = System.Drawing.Color.White;
             button2.FlatStyle = FlatStyle.Flat;
             button2.Font = new System.Drawing.Font("Calibri", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            button2.Location = new System.Drawing.Point(400, 500);
+            button2.Location = new System.Drawing.Point(300, 500);
             button2.Name = "button2";
             button2.Size = new System.Drawing.Size(200, 100);
             button2.TabIndex = 1;
@@ -62,7 +62,7 @@ namespace HomeworkTest
             button3.BackColor = System.Drawing.Color.White;
             button3.FlatStyle = FlatStyle.Flat;
             button3.Font = new System.Drawing.Font("Calibri", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            button3.Location = new System.Drawing.Point(400, 700);
+            button3.Location = new System.Drawing.Point(300, 700);
             button3.Name = "button3";
             button3.Size = new System.Drawing.Size(200, 100);
             button3.TabIndex = 2;
@@ -77,7 +77,7 @@ namespace HomeworkTest
             exitButton.FlatStyle = FlatStyle.Flat;
             exitButton.Font = new System.Drawing.Font("Calibri", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             exitButton.ForeColor = System.Drawing.Color.Black;
-            exitButton.Location = new System.Drawing.Point(950, 0);
+            exitButton.Location = new System.Drawing.Point(750, 0);
             exitButton.Name = "exitButton";
             exitButton.Size = new System.Drawing.Size(50, 60);
             exitButton.TabIndex = 3;
@@ -107,7 +107,7 @@ namespace HomeworkTest
             // 
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = System.Drawing.Color.White;
-            ClientSize = new System.Drawing.Size(1000, 1000);
+            ClientSize = new System.Drawing.Size(800, 800);
             Controls.Add(titleLabel);
             Controls.Add(backButton);
             Controls.Add(exitButton);
