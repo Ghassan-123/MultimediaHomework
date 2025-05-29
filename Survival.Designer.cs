@@ -32,6 +32,8 @@ namespace HomeworkTest
             // 
             // pictureBox1
             // 
+
+            //
             pictureBox1.Location = new System.Drawing.Point(75, 50);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new System.Drawing.Size(600, 600);
@@ -100,10 +102,9 @@ namespace HomeworkTest
             // 
             // Survival
             // 
-            AutoScaleDimensions = new System.Drawing.SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = System.Drawing.Color.White;
-            ClientSize = new System.Drawing.Size(1500, 1000);
+            ClientSize = new System.Drawing.Size(1500, 1500);
             Controls.Add(exitButton);
             Controls.Add(titleLabel2);
             Controls.Add(richTextBox2);

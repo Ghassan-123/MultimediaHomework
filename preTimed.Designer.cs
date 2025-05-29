@@ -104,7 +104,6 @@ namespace HomeworkTest
             // 
             // preTimed
             // 
-            AutoScaleDimensions = new System.Drawing.SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = System.Drawing.Color.White;
             ClientSize = new System.Drawing.Size(1000, 1000);

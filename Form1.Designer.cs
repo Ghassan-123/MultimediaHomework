@@ -68,7 +68,6 @@ namespace HomeworkTest
             // 
             // Form1
             // 
-            AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(1000, 1000);
