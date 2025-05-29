@@ -67,7 +67,7 @@ namespace HomeworkTest
             Label winLabel = new Label();
             winLabel.Text = "YOU LOSE!";
             winLabel.Font = new Font("Calibri", 48, FontStyle.Bold);
-            winLabel.ForeColor = Color.Green;
+            winLabel.ForeColor = Color.Red;
             winLabel.AutoSize = false; // Disable AutoSize to manually control dimensions
             winLabel.TextAlign = ContentAlignment.MiddleCenter; // Center-align text inside the label
 
