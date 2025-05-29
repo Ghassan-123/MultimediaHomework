@@ -31,7 +31,7 @@ namespace HomeworkTest
             // 
             // pictureBox1
             // 
-            pictureBox1.Location = new System.Drawing.Point(50, 100);
+            pictureBox1.Location = new System.Drawing.Point(10, 100);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new System.Drawing.Size(Image1.Width, Image1.Height);
             pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -41,7 +41,7 @@ namespace HomeworkTest
             // 
             // pictureBox2
             // 
-            pictureBox2.Location = new System.Drawing.Point(Image1.Width + 100, 100);
+            pictureBox2.Location = new System.Drawing.Point(Image1.Width + 20, 100);
             pictureBox2.Name = "pictureBox2";
             pictureBox2.Size = new System.Drawing.Size(Image2.Width, Image2.Height);
             pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -55,13 +55,13 @@ namespace HomeworkTest
             titleLabel1.Font = new Font("Calibri", 10F, FontStyle.Bold);
             titleLabel1.ForeColor = Color.Black;
             titleLabel1.AutoSize = true; // Automatically size to fit text
-            titleLabel1.Location = new Point(50, Image1.Height + 150); // Position on form
+            titleLabel1.Location = new Point(25, Image1.Height + 150); // Position on form
             //
             // richTextBox1
             // 
             richTextBox1.Location = new System.Drawing.Point(150, Image2.Height + 150);
             richTextBox1.Name = "richTextBox1";
-            richTextBox1.Size = new System.Drawing.Size(150, 25);
+            richTextBox1.Size = new System.Drawing.Size(100, 25);
             richTextBox1.TabIndex = 2;
             richTextBox1.Text = "";
             // 
@@ -75,11 +75,11 @@ namespace HomeworkTest
             titleLabel2.Font = new Font("Calibri", 10F, FontStyle.Bold);
             titleLabel2.ForeColor = Color.Black;
             titleLabel2.AutoSize = true; // Automatically size to fit text
-            titleLabel2.Location = new Point(Image1.Width + 100, Image2.Height + 150); // Position on form
+            titleLabel2.Location = new Point(Image1.Width + 50, Image2.Height + 150); // Position on form
             // 
             // richTextBox2
             // 
-            richTextBox2.Location = new System.Drawing.Point(Image1.Width + 225, Image2.Height + 150);
+            richTextBox2.Location = new System.Drawing.Point(Image1.Width + 175, Image2.Height + 150);
             richTextBox2.Name = "richTextBox2";
             richTextBox2.Size = new System.Drawing.Size(150, 25);
             richTextBox2.TabIndex = 3;
@@ -92,7 +92,7 @@ namespace HomeworkTest
             exitButton.FlatStyle = FlatStyle.Flat;
             exitButton.Font = new Font("Calibri", 10F, FontStyle.Bold, GraphicsUnit.Point);
             exitButton.ForeColor = Color.Black;
-            exitButton.Location = new Point(Image1.Width + Image2.Width + 100, 0);
+            exitButton.Location = new Point(Image1.Width + Image2.Width, 0);
             exitButton.Name = "exitButton";
             exitButton.Size = new Size(50, 60);
             exitButton.TabIndex = 2;
@@ -106,7 +106,7 @@ namespace HomeworkTest
             // 
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             BackColor = System.Drawing.Color.White;
-            ClientSize = new System.Drawing.Size(Image1.Width + Image2.Width + 150, Image1.Height + 300);
+            ClientSize = new System.Drawing.Size(Image1.Width + Image2.Width + 50, Image1.Height + 300);
             Controls.Add(titleLabel2);
             Controls.Add(richTextBox2);
             Controls.Add(titleLabel1);
