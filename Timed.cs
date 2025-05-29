@@ -31,12 +31,12 @@ namespace HomeworkTest
         private int differences;
 
         public Timed(int x,int d)
-        {   
-            InitializeComponent();
+        {
             difficulty = d;
-            countdownValue = x;
             LoadImages();
             LoadAudios();
+            InitializeComponent();
+            countdownValue = x;
             Box1 = pictureBox1;
             Box2 = pictureBox2;
             pictureBox1.Image = Image1;

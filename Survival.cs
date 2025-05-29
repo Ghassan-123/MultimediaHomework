@@ -31,10 +31,10 @@ namespace HomeworkTest
 
         public Survival(int x,int d)
         {
-            InitializeComponent();
             difficulty = d;
-            clicksValue = x;
             LoadImages();
+            InitializeComponent();
+            clicksValue = x;
             LoadAudios();
             Box1 = pictureBox1;
             Box2 = pictureBox2;

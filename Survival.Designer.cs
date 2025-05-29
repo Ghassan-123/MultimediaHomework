@@ -36,7 +36,7 @@ namespace HomeworkTest
             //
             pictureBox1.Location = new System.Drawing.Point(75, 50);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new System.Drawing.Size(600, 600);
+            pictureBox1.Size = new System.Drawing.Size(Image1.Width, Image1.Height);
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox1.TabIndex = 3;
             pictureBox1.TabStop = false;
@@ -46,7 +46,7 @@ namespace HomeworkTest
             // 
             pictureBox2.Location = new System.Drawing.Point(800, 50);
             pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new System.Drawing.Size(600, 600);
+            pictureBox2.Size = new System.Drawing.Size(Image1.Width, Image1.Height);
             pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox2.TabIndex = 4;
             pictureBox2.TabStop = false;
