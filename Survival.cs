@@ -187,7 +187,7 @@ namespace HomeworkTest
             }
             PlaySound(found);
             _ = !found;
-            if (clicksValue <= 0)
+            if (clicksValue <= 0 && differences > 0)
             {
                 clicksEnded();
             }

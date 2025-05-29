@@ -31,7 +31,7 @@ namespace HomeworkTest
             // 
             button1.BackgroundImageLayout = ImageLayout.Center;
             button1.Font = new Font("Calibri", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            button1.Location = new Point(300, 300);
+            button1.Location = new Point(300, 250);
             button1.Name = "button1";
             button1.Size = new Size(200, 100);
             button1.TabIndex = 0;
@@ -41,8 +41,8 @@ namespace HomeworkTest
             // 
             // button2
             // 
-            button2.Font = new Font("Calibri", 10.125F, FontStyle.Regular, GraphicsUnit.Point);
-            button2.Location = new Point(300, 500);
+            button2.Font = new Font("Calibri", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            button2.Location = new Point(300, 400);
             button2.Name = "button2";
             button2.Size = new Size(200, 100);
             button2.TabIndex = 1;
@@ -70,7 +70,7 @@ namespace HomeworkTest
             // 
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(800, 800);
+            ClientSize = new Size(800, 600);
             Controls.Add(titleLabel);
             Controls.Add(exitButton);
             Controls.Add(button2);
